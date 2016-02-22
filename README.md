@@ -14,7 +14,7 @@ A simple small management system is created based on the brophp framework
 
 模板管理：
 
-实现前台模板的修改、添加模版、模板重命名、模板删除等功能。
+实现前台模板的修改、添加模版、模板重命名、模板删除、模板资源上传等功能。
 
 相册管理：
 
