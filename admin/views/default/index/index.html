@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript" src="<{$res}>/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="<{$res}>/js/jquery-ui-1.8.22.custom.min.js"></script>
+    <script type="text/javascript" src="<{$res}>/js/index.js"></script>
+</head>
+<body>
+    <div class="warp">
+        <!--头部开始-->
+        <div class="top_c">
+            <div class="top-menu">
+                <ul class="top-menu-nav">
+                    <!--<li><a href="#">首页</a></li>-->
+                    <{foreach $pauth_info as $k=>$v}>
+                    <li><a href="#"><{$v.name}><i class="tip-up"></i></a>
+                    
+                        <ul class="kidc">
+                        <{foreach $sauth_info as $kk=>$vv}>
+                        <{if $vv.pid == $v.id}>
+                            <li><a target="Conframe" href="<{$app}>/<{$vv.control}>/<{$vv.action}>"><{$vv.name}></a></li>
+                        <{/if}>
+                        <{/foreach}>
+                        </ul>
+                    </li>
+                    <{/foreach}>
+                </ul>
+            </div>
+            <div class="top-nav"><a target='Conframe' href='<{$url}>/welcome' style='color:#afbbd5'>系统首页</a>&nbsp;&nbsp;&nbsp;&nbsp;欢迎您，<{$session['name']}>  &nbsp;&nbsp; 上次登录：<{$session['time']}>&nbsp;&nbsp;&nbsp;&nbsp; <a href="<{$app}>/login/logout">安全退出</a></div>
+        </div>
+        <!--头部结束-->
+        <!--左边菜单开始-->
+        <div class="left_c left">
+            <h1>操作菜单列表</h1>
+            <div class="acc">
+            <{foreach $pauth_info as $k => $v}>
+                <div>
+                    <a class="one"><{$v.name}></a>
+                    <{foreach $sauth_info as $kk => $vv}>
+                    <{if $vv.pid == $v.id}>
+                    <ul class="kid">
+                        <li><b class="tip"></b><a target="Conframe" href="<{$app}>/<{$vv.control}>/<{$vv.action}>"><{$vv.name}></a></li>
+                    </ul>
+                    <{/if}>
+                    <{/foreach}>
+                </div>
+            <{/foreach}>
+            <div id="datepicker"></div>
+            </div>
+
+        </div>
+        <!--左边菜单结束-->
+        <!--右边框架开始-->
+        <div class="right_c">
+            <div class="nav-tip" onclick="javascript:void(0)">&nbsp;</div>
+
+        </div>
+        <div class="Conframe">
+            <iframe name="Conframe" id="Conframe" <{if $session['src']}>src="<{$session['src']}>index"<{else}><{if $session['origin_url']}>src="<{$session['origin_url']}>"<{else}>src="<{$url}>/welcome"<{/if}><{/if}>></iframe>
+        </div>
+        <!--右边框架结束-->
+
+        <!--底部开始-->
+        <div class="bottom_c">Copyright &copy;2015-2016  版权所有</div>
+        <!--底部结束-->
+    </div>
+</body>
+</html>

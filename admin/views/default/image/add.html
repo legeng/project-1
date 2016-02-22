@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/admin-all.css" />
+    <script type="text/javascript" src="<{$res}>/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="<{$res}>/js/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/ui-lightness/jquery-ui-1.8.22.custom.css" />
+
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/diyUpload.css">
+    <script type="text/javascript" src="<{$res}>/js/webuploader.html5only.min.js"></script>
+    <script type="text/javascript" src="<{$res}>/js/diyUpload.js"></script>
+     <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker();
+            $('#as').diyUpload({
+                    url:"<{$url}>/saveimg/type/ajax",
+                    success:function( data ) {
+                            console.info( data );
+                    },
+                    error:function( err ) {
+                            console.info( err );	
+                    },
+                    buttonText : '请选择文件',
+                    chunked:true,
+                    // 分片大小
+                    chunkSize:512 * 1024,
+                    //最大上传的文件数量, 总文件大小,单个文件大小(单位字节);
+                    fileNumLimit:50,
+                    fileSizeLimit:500000 * 1024,
+                    fileSingleSizeLimit:50000 * 1024,
+                    accept: {}
+            });
+        });
+    </script>
+   </head>
+
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>系统管理<b class="tip"></b><a target="Conframe" href="<{$url}>/index">相册管理</a><b class="tip"></b>添加图片<a target="Conframe" href="<{$url}>/index" class="btn btn-primary add" style="margin-top:-5px;margin-bottom:5px;margin-right:-30px;float:right;">返回上一页</a></div>
+    <form name="updateManager" method="post" action="<{$url}>/save" enctype="multipart/form-data" >
+    <table class="table table-striped table-bordered table-condensed list">
+        <thead>
+            <tr>
+                <td colspan="4"><b>添加图片</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="15%">相册名称<font color="FF0000">*</font></td>
+                <td width="500">
+                    <input name="name" value="<{date('Y-m-d')}>"  placeholder="请输入名称" type="text"  />
+                </td>
+                <td width="500">创建时间<font color="FF0000">*</font></td>
+                <td width="500">
+                    <input name="create_time" value="<{date('Y-m-d')}>" type="text"  class="ipt datepicker" /></td>
+            </tr>
+            <tr>
+                <td width="15%" valign="middle">选择图片<font color="FF0000">*</font></td>
+                <td width="940" colspan="3"><div id="demo" style="margin:50px auto; width:940px; min-height:800px; background:#CF9">
+                        <div id="as" ></div>
+                </div></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-inverse" id="find" type="submit" value="添 加" />
+                    <input class="btn btn-inverse" type="reset" value="取 消" /></td>
+            </tr>
+        </tfoot>
+    </table>
+    </form>
+</body>
+</html>
+

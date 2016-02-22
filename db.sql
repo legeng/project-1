@@ -1,0 +1,55 @@
+--CREATE TABLE `sw_auth` (
+--  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+--  `name` varchar(20) NOT NULL COMMENT '权限名称',
+--  `pid` smallint(6) unsigned NOT NULL COMMENT '父级权限id',
+--  `control` varchar(32) NOT NULL DEFAULT '' COMMENT '控制器',
+--  `action` varchar(32) NOT NULL DEFAULT '' COMMENT '执行方法',
+--  `path` varchar(32) NOT NULL DEFAULT '' COMMENT '分类路径',
+--  `level` tinyint(4) NOT NULL DEFAULT '0' COMMENT '权限级别',
+--  PRIMARY KEY (`id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+--
+--INSERT INTO `sw_auth` VALUES (1,'系统管理',1,'','','1',0),(2,'用户管理',1,'manage','index','1-2',1),(3,'角色管理',1,'role','index','1-3',1),(4,'权限管理',1,'auth','index','1-4',1),(5,'新闻管理',1,'news' , 'index' ,'1-5' , 1);
+--
+--CREATE TABLE `sw_manager` (
+--  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员id',
+--  `name` varchar(32) NOT NULL COMMENT '管理员名称',
+--  `pwd` varchar(32) NOT NULL COMMENT '管理员密码',
+--  `time` int(10) unsigned NOT NULL COMMENT '上一次登录时间',
+--  `roleid` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '拥有角色id',
+--  `disable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否禁用',
+--  PRIMARY KEY (`id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+--
+--INSERT INTO `sw_manager` VALUES (1,'admin','e10adc3949ba59abbe56e057f20f883e',1453701703,1,1);
+--
+--CREATE TABLE `sw_role` (
+--  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+--  `name` varchar(20) NOT NULL COMMENT '角色名称',
+--  `authid` varchar(128) DEFAULT NULL COMMENT '角色拥有权限id',
+--  `ac` text COMMENT '控制器和方法',
+--  PRIMARY KEY (`id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+--INSERT INTO `sw_role` VALUES (1,'超级管理员','1','');
+
+--CREATE TABLE `sw_news` (
+--  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+--  `title` varchar(20) NOT NULL COMMENT '新闻标题',
+--  `picture` varchar(128) DEFAULT NULL COMMENT '新闻头像',
+--  `content` text COMMENT '新闻内容',
+--  `create_time` int(11) COMMENT '创建时间',
+--  PRIMARY KEY (`id`)
+--) ENGINE=MYISAM DEFAULT CHARSET=utf8 COMMENT='新闻表';
+
+--CREATE TABLE `sw_message` (
+-- `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+--`title` varchar(20) NOT NULL COMMENT '留言标题',
+--`content` text COMMENT '留言内容',
+--`qq` char(15) COMMENT '留言人qq',
+--`email` char(64) COMMENT '留言人邮箱',
+--`create_time` int(11) COMMENT '创建时间',
+--PRIMARY KEY (`id`)
+--) ENGINE=MYISAM DEFAULT CHARSET=utf8 COMMENT='留言表';
+
+
+
