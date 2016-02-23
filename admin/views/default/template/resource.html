@@ -32,7 +32,7 @@
                 return false;
             })
 
-            $('#res-url').click(function(){
+            $('.res-url').click(function(){
                 $(this).select();
             })
         })
@@ -62,7 +62,7 @@
         <{foreach $resource as $k=>$v}>
             <tr>
                 <td class="auto-style1" style="text-align:left"><{$v.name}></td>
-                <td class="auto-style1" style="text-align:center"><input type='text' value="<{$v.ac}>" id='res-url' style='width:600px;'/></td>
+                <td class="auto-style1" style="text-align:center"><input type='text' value="<{$v.ac}>" class='res-url' style='width:600px;'/></td>
                 <td class="auto-style1" style="width:100px;"><a href="<{$url}>/delres/id/<{$v.name}>" onclick="return del(this);">删除</a></td>
             </tr>
         <{/foreach}>
